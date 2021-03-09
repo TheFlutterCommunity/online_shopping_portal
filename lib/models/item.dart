@@ -7,7 +7,7 @@ class Item {
   String releaseDate;
   String releaseDateDesc;
   String directors;
-  String runtime;
+  String price;
   String desc;
   double rating;
   String imageUrl;
@@ -23,7 +23,7 @@ class Item {
     @required this.directors,
     @required this.releaseDate,
     @required this.releaseDateDesc,
-    @required this.runtime,
+    @required this.price,
     @required this.desc,
     @required this.rating,
     @required this.imageUrl,

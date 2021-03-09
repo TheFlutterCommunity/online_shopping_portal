@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping_portal/screens/get_ratings.dart';
-import 'package:online_shopping_portal/screens/griditem_details.dart';
-import 'package:online_shopping_portal/screens/item.dart';
+import 'package:online_shopping_portal/screens/grid_item_details.dart';
+import 'package:online_shopping_portal/models/item.dart';
 
-class ItemList extends StatelessWidget {
+class GridItem extends StatelessWidget {
   final Item item;
 
-  const ItemList({@required this.item});
+  const GridItem({@required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +22,29 @@ class ItemList extends StatelessWidget {
         },
         // child: Expanded(
         child: Card(
-          elevation: 1.0,
+          elevation: 2.0,
+          color: Colors.grey[100],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              AspectRatio(
-                aspectRatio: 18.0 / 12.0,
-                child: Image.asset(
-                  item.trailerImg1,
-                  fit: BoxFit.cover,
-                ),
+              Stack(
+                children: [
+                  AspectRatio(
+                    aspectRatio: 18.0 / 11.0,
+                    child: Image.asset(
+                      item.trailerImg1,
+                      fit: BoxFit.cover,
+                      color: Color.fromRGBO(255, 255, 255, 0.7),
+                      colorBlendMode: BlendMode.darken,
+                    ),
+                  ),
+                ],
               ),
               new Padding(
-                padding: EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 2.0),
+                padding: EdgeInsets.fromLTRB(8.0, 6.0, 8.0, 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -46,56 +53,39 @@ class ItemList extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(
-                        fontSize: 15.0,
-                        //color: Color(0xFFD73C29),
-                        color: Colors.purple,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 14.0,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
+                    SizedBox(height: 4.0),
                     Text(
                       item.category,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 11.0,
+                        color: Colors.black54,
+                        fontSize: 10.0,
                       ),
                     ),
-                    SizedBox(height: 0.0),
+                    SizedBox(height: 4.0),
                     GetRatings(),
-                    SizedBox(height: 2.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(right: 4.0),
-                          child: Column(
-                            children: <Widget>[
+                    SizedBox(height: 4.0),
+                    Container(
+                      margin: EdgeInsets.only(right: 4.0),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: [
                               Text(
                                 'Supplier Rating:',
                                 style: TextStyle(
-                                  color: Colors.black54,
+                                  color: Colors.black38,
                                   fontSize: 12.0,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              SizedBox(height: 2.0),
-                              Text(
-                                item.releaseDate,
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: 4.0),
-                          child: Column(
-                            children: <Widget>[
+                              SizedBox(width: 4.0),
                               Text(
                                 '4.9 *',
                                 style: TextStyle(
@@ -104,18 +94,36 @@ class ItemList extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Text(
-                                item.runtime,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
                             ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 4.0),
+                    Container(
+                      margin: EdgeInsets.only(left: 2.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'MRP',
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            item.price,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -201,7 +209,7 @@ class MovieDesc extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    item.releaseDate,
+                    'MRP',
                     //textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Colors.black,
@@ -226,7 +234,7 @@ class MovieDesc extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  item.runtime,
+                  item.price,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 9.0,

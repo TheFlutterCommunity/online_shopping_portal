@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping_portal/screens/get_ratings.dart';
-import 'package:online_shopping_portal/screens/item.dart';
+import 'package:online_shopping_portal/models/item.dart';
 
 class GridItemDetails extends StatelessWidget {
   final Item item;
@@ -30,10 +30,10 @@ class GridItemDetails extends StatelessWidget {
           ),
         ],
         title: Text(item.name),
-        backgroundColor: Colors.purple,
+        //backgroundColor: Colors.purple,
       ),
       //backgroundColor: Color(0xFF761322),
-      backgroundColor: Colors.purple,
+      backgroundColor: Colors.blue,
       body: ListView(
         children: <Widget>[
           HeaderBanner(this.item),
@@ -73,7 +73,7 @@ class GridItemDetails extends StatelessWidget {
                         'Add to cart',
                         style: TextStyle(
                           fontSize: 18.0,
-                          color: Color(0xFF761322),
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -101,7 +101,7 @@ class GridItemDetails extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18.0,
                           //color: Color(0xFF761322),
-                          color: Color(0xFF761322),
+                          color: Colors.blue,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -121,7 +121,7 @@ class GridItemDetails extends StatelessWidget {
               ),
             ),
           ),
-          GetTrailers(this.item),
+          ProductCategories(this.item),
         ],
         // ),
         //],
@@ -137,10 +137,10 @@ class GetTags extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.fromLTRB(14.0, 2.0, 5.0, 10.0),
+      margin: EdgeInsets.fromLTRB(14.0, 12.0, 5.0, 10.0),
       height: 35.0,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           InkWell(
             onTap: () => {},
@@ -153,7 +153,7 @@ class GetTags extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 // color: Color(0xFF761322),
-                color: Colors.purple,
+                //color: Colors.purple,
                 border: Border.all(color: Colors.white, width: 1.0),
                 borderRadius: BorderRadius.circular(30.0),
               ),
@@ -176,7 +176,7 @@ class GetTags extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 // color: Color(0xFF761322),
-                color: Colors.purple,
+                color: Colors.blueAccent,
                 border: Border.all(color: Colors.white, width: 1.0),
                 borderRadius: BorderRadius.circular(30.0),
               ),
@@ -278,11 +278,20 @@ class HeaderImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      bannerUrl,
-      width: 600.0,
-      height: 380.0,
-      fit: BoxFit.cover,
+    return Stack(
+      children: [
+        Image.asset(
+          bannerUrl,
+          width: 600.0,
+          height: 380.0,
+          fit: BoxFit.contain,
+        ),
+        Container(
+          width: 600.0,
+          height: 380.0,
+          color: Colors.black.withOpacity(0.1),
+        )
+      ],
     );
   }
 }
@@ -297,7 +306,6 @@ class HeaderContent extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Container(
-        //color: Colors.black.withOpacity(0.1),
         constraints: BoxConstraints.expand(
           height: 20.0,
         ),
@@ -310,44 +318,7 @@ class HeaderContent extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-//                      Container(
-//                        padding: const EdgeInsets.only(bottom: 1.0),
-//                        child: Text(
-//                          item.name,
-//                          overflow: TextOverflow.ellipsis,
-//                          maxLines: 1,
-//                          style: TextStyle(
-//                            fontSize: 26.0,
-//                            color: Colors.white,
-//                            fontWeight: FontWeight.bold,
-//                          ),
-//                        ),
-//                      ),
-//                    Padding(
-//                        padding: EdgeInsets.only(top: 20)
-//                    ),
                     GetRatings(),
-
-//                      Container(
-//                        margin: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-//                        child: Text(
-//                          item.directors,
-//                          style: TextStyle(
-//                            color: Colors.white,
-//                            fontSize: 15.0,
-//                          ),
-//                        ),
-//                      ),
-//                      Container(
-//                        //margin: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-//                        child: Text(
-//                          item.releaseDateDesc,
-//                          style: TextStyle(
-//                            color: Colors.white,
-//                            fontSize: 15.0,
-//                          ),
-//                        ),
-//                      ),
                   ],
                 ),
                 // ),
@@ -361,20 +332,22 @@ class HeaderContent extends StatelessWidget {
   }
 }
 
-class GetTrailers extends StatelessWidget {
+class ProductCategories extends StatelessWidget {
   final Item item;
 
-  GetTrailers(this.item);
+  ProductCategories(this.item);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
       height: 100.0,
+
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          Container(
+          ClipRRect(
+            borderRadius: new BorderRadius.circular(8.0),
             child: Image.asset(
               item.trailerImg1,
               width: 160.0,
@@ -382,8 +355,9 @@ class GetTrailers extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Container(
-            padding: const EdgeInsets.only(left: 5.0),
+          SizedBox(width: 8),
+          ClipRRect(
+            borderRadius: new BorderRadius.circular(8.0),
             child: Image.asset(
               item.trailerImg2,
               width: 160.0,
@@ -391,8 +365,9 @@ class GetTrailers extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Container(
-            padding: const EdgeInsets.only(left: 5.0),
+          SizedBox(width: 8),
+          ClipRRect(
+            borderRadius: new BorderRadius.circular(8.0),
             child: Image.asset(
               item.trailerImg3,
               width: 160.0,

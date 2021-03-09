@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
-class ModelGrid {
+class ItemModel {
   final String title;
   final String subtitle;
   final String ratings;
   final String logo_path;
   final String image_path;
 
-  ModelGrid(
+  ItemModel(
       {@required this.title,
       @required this.subtitle,
       @required this.ratings,

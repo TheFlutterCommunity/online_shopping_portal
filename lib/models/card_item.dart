@@ -1,18 +1,13 @@
-//import 'package:fleva_icons/fleva_icons.dart';
 import 'package:flutter/material.dart';
-//import 'package:movies/constants.dart';
 
-class CardGrid extends StatelessWidget {
+class CardItem extends StatelessWidget {
   final String title;
   final String rating;
   final String logo;
   final Function onPress;
 
-  CardGrid(
-      {@required this.title,
-      @required this.rating,
-      @required this.logo,
-      this.onPress});
+  CardItem({@required this.title, @required this.rating, @required this.logo, this.onPress});
+
   @override
   Widget build(BuildContext context) {
     var headStyle1;
