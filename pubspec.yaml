@@ -1,0 +1,52 @@
+name: online_shopping_portal
+description: A new Flutter application for demonstrating online shopping portal.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/new.jpg
+    - assets/images/banner.jpg
+    - assets/images/girl.jpg
+    - assets/images/android.png
+    - assets/images/download.png
+    - assets/images/shirts.png
+    - assets/images/second_shirt.png
+    - assets/images/third_shirt.png
+    - assets/images/fourth_shirt.png
+    - assets/images/five_shirt.png
+    - assets/images/images.png
+    - assets/images/flutter.png
+    - assets/images/net.png
+    - assets/images/java.png
+    - assets/images/notebook.png
+    - assets/images/social.png
+    - assets/images/crossplatform.png
+    - assets/images/iphone.png
+    - assets/images/media.png
+    - assets/images/game.png
+    - assets/images/purple_dress.png
+    - assets/images/blue_dress.png
+    - assets/images/sweter.png
+    - assets/images/baby_top.png
+    - assets/images/scirt_top.png
+    - assets/images/women_clothing.png
+
+#   - assets/images/handshake.png
+#   - assets/images/handshak.jpg
